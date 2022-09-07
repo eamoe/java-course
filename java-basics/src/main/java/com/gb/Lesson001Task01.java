@@ -4,7 +4,7 @@
 
 package com.gb;
 
-public final class Task01 {
+public final class Lesson001Task01 {
     public static void main(String[] args) {
 
         int[] nums = new int[] {1, 7, 3, 6, 5, 6};

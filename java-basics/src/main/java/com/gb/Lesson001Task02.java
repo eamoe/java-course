@@ -4,7 +4,7 @@ package main.java.com.gb;
 // Если общего префикса нет, то возвращать пустую строку.
 // Пример ["aabb", "aabbb", "aaabb"] - ответ "aa"
 
-public class Task02 {
+public class Lesson001Task02 {
     public static void main(String[] args) {
         
         String[] strings = new String[] {"aabb", "aabbb", "aaabb"};
