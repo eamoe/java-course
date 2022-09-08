@@ -17,7 +17,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
@@ -31,7 +34,6 @@ public class Lesson002Task03 {
         try{
             br = new BufferedReader(new FileReader(file));
             jsonFileStr =  br.lines().collect(Collectors.joining());
-            System.out.println(jsonFileStr);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
