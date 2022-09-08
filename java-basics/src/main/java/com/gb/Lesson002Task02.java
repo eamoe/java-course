@@ -13,7 +13,8 @@ import org.json.simple.JSONValue;
 public class Lesson002Task02 {
     public static void main(String[] args) {
 
-        String query = "SELECT * FROM students WHERE ";
+        String query = "SELECT * FROM students";
+        String where = " WHERE ";
         String queryClause = "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":\"null\"}";
 
         Object jsonStr = JSONValue.parse(queryClause);
@@ -26,6 +27,13 @@ public class Lesson002Task02 {
 
         StringBuilder sqlQuery = new StringBuilder();
         sqlQuery.append(query);
+
+        if(!name.equals("null")
+            || !country.equals("null")
+            || !city.equals("null")
+            || !age.equals("null")) {
+            sqlQuery.append(where);
+        }
 
         boolean after = false;
 
