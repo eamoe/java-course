@@ -17,16 +17,34 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import java.io.*;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public class Lesson002Task03 {
     public static void main(String[] args) {
 
-        String jsonFile =   "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"},\n" +
-                            "{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"},\n" +
-                            "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
+        String jsonFileStr = "";
 
-        Object json = JSONValue.parse(jsonFile);
+        File file = new File("/Users/eugenemenski/java-course/java-basics/students.json");
+        BufferedReader br = null;
+        try{
+            br = new BufferedReader(new FileReader(file));
+            jsonFileStr =  br.lines().collect(Collectors.joining());
+            System.out.println(jsonFileStr);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        Object json = JSONValue.parse(jsonFileStr);
         JSONArray array = (JSONArray) json;
 
         Iterator it = array.iterator();
