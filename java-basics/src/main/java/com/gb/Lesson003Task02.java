@@ -21,20 +21,20 @@ public class Lesson003Task02 {
             numbers.add(random.nextInt(100));
         }
 
-        int number = numbers.get(0);
-        int min = number;
-        int max = number;
+        int nextNumber = numbers.get(0);
+        int min = nextNumber;
+        int max = nextNumber;
         int sum = 0;
         float average = 0.0F;
         for (int i = 0; i < size; i++){
 
-            number = numbers.get(i);
-            sum += number;
-            if (number > max) {
-                max = number;
+            nextNumber = numbers.get(i);
+            sum += nextNumber;
+            if (nextNumber > max) {
+                max = nextNumber;
             }
-            if (number < min) {
-                min = number;
+            if (nextNumber < min) {
+                min = nextNumber;
             }
         }
         average = (float) sum / size;
