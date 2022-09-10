@@ -20,13 +20,12 @@ public class Lesson003Task01 {
 
         System.out.println("Исходный список: " + numbers.toString());
 
-        int i = 0;
-        while (i < numbers.size()) {
+        int i = numbers.size() - 1;
+        while (i >= 0) {
             if (numbers.get(i) % 2 == 0) {
                 numbers.remove(i);
-                i--;
             }
-            i++;
+            i--;
         }
 
         System.out.println("Список после удаления четных чисел: " + numbers.toString());
