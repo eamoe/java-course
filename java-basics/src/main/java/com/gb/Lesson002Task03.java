@@ -11,7 +11,7 @@
 Студент Петрова получил 4 по предмету Информатика.
 Студент Краснов получил 5 по предмету Физика. */
 
-package main.java.com.gb;
+package com.gb;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -4,13 +4,13 @@
 3 Расширение файла:
 4 Расширение файла: jpg */
 
-package main.java.com.gb;
+package com.gb;
 
 import java.io.File;
 
 public class Lesson002Task01 {
     public static void main(String[] args) {
-        
+
         File directory = new File("/Users/eugenemenski/Desktop/Unsorted/");
 
         File[] files = directory.listFiles();

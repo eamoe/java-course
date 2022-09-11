@@ -5,7 +5,7 @@
 Параметры для фильтрации: {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
 Ответ: "select * from students where name = 'Ivanov' and country = 'Russia' and city = 'Moscow'" для приведенного примера */
 
-package main.java.com.gb;
+package com.gb;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;

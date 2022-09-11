@@ -1,4 +1,4 @@
-package main.java.com.gb;
+package com.gb;
 
 // Напишите функцию, для поиска наиболее длинного общего префикса, среди массива строк.
 // Если общего префикса нет, то возвращать пустую строку.
@@ -6,9 +6,9 @@ package main.java.com.gb;
 
 public class Lesson001Task02 {
     public static void main(String[] args) {
-        
+
         String[] strings = new String[] {"aabb", "aabbb", "aaabb"};
-        
+
         StringBuilder prefix = new StringBuilder();
         int min_length = strings[0].length();
         boolean check = true;
