@@ -17,11 +17,11 @@ public class Stack <T> {
         }
 
         public boolean isEmpty() {
-            return top == -1;
+            return this.top == -1;
         }
 
         public boolean isFull() {
-            return top == MAX_SIZE - 1;
+            return this.top == this.MAX_SIZE - 1;
         }
 
         public void push(T item) {
@@ -30,7 +30,7 @@ public class Stack <T> {
                 System.exit(-1);
             }
             else {
-                this.array[++top] = item;
+                this.array[++this.top] = item;
             }
         }
 
@@ -39,7 +39,7 @@ public class Stack <T> {
                 System.out.println("Стек пуст. Завершение работы!\n");
                 System.exit(-1);
             }
-            return this.array[top];
+            return this.array[this.top];
         }
 
         public T pop() {
@@ -47,7 +47,7 @@ public class Stack <T> {
                 System.out.println("Извлечение данных из пустого стека. Завершение работы!\n");
                 System.exit(-1);
             }
-            System.out.println("Удаление элемента: " + peek());
-            return array[top--];
+            System.out.println("Удаление элемента: " + this.peek());
+            return this.array[this.top--];
         }
 }

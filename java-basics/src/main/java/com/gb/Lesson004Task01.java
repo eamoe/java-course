@@ -6,8 +6,6 @@
 package com.gb;
 import com.gb.Stack;
 
-import java.util.Scanner;
-
 public class Lesson004Task01 {
 
     public static void main(String[] args) {
