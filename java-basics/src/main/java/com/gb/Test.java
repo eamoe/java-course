@@ -15,6 +15,15 @@ public class Test {
         double x = 9.997;
         // Correct way to use Round while converting to 'int' because Round converts to 'long' by default
         int nx = (int) Math.round(x);
-        System.out.println((byte) 300);
+        //System.out.println((byte) 300);
+        String all = String.join(" / ", "S", "M", "L", "XL");
+        System.out.println(all);
+        // Check if the string is neither null nor empty
+        //if (str != null && str.length() != 0)
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("one");
+        builder.append("two");
+        String completedString =builder.toString();
     }
 }
