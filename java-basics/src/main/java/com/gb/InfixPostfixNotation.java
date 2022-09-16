@@ -1,15 +1,16 @@
 package com.gb;
 
 public class InfixPostfixNotation {
-    String infixExp;
-    String postfixExp;
-    int length;
-    float result;
+    private String infixExp;
+    private String postfixExp;
+    private int length;
+    private float result;
 
     public InfixPostfixNotation (String string) {
         this.infixExp = string.replaceAll(" ", "");
         this.postfixExp = "";
         this.length = this.infixExp.length();
+        this.result = 0.0F;
     }
 
     public String getInfix() {
@@ -37,7 +38,7 @@ public class InfixPostfixNotation {
 
     private static boolean isDigit(String s) throws NumberFormatException {
         try {
-            Integer.parseInt(s);
+            Float.parseFloat(s);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -50,7 +51,7 @@ public class InfixPostfixNotation {
 
         for(int i = 0; i < this.length; i++) {
             char symbol = infix.charAt(i);
-            if(isDigit(Character.toString(symbol))) {
+            if(isDigit(Character.toString(symbol)) || Character.isLetter(symbol)) {
                 postfixBuilder.append(symbol);
             }
             else if(symbol == '(') {
@@ -58,6 +59,7 @@ public class InfixPostfixNotation {
             }
             else if(symbol == '^') {
                 stack.push('^');
+                postfixBuilder.append(" ");
             }
             else if(symbol == ')') {
                 while(!stack.isEmpty() && stack.peek() != '(') {
@@ -92,34 +94,36 @@ public class InfixPostfixNotation {
     }
 
     public Float calcExpression(String exp) {
-        Stack<Float> stack = new Stack<>(exp.length());
 
-        for(int i = 0; i < exp.length(); i++) {
-            char symbol = exp.charAt(i);
+        String[] array = exp.split(" ");
 
-            if (isDigit(Character.toString(symbol))) {
-                stack.push(Float.parseFloat(Character.toString(symbol)));
+        Stack<Float> stack = new Stack<>(array.length);
+
+        for(int i = 0; i < array.length; i++) {
+            String item = array[i];
+
+            if (isDigit(item)) {
+                stack.push(Float.parseFloat(item));
             }
             else {
-                switch (symbol) {
-                    case '+':
+                switch (item) {
+                    case "+":
                         this.result = stack.pop() + stack.pop();
                         stack.push(this.result);
                         break;
-                    case '-':
+                    case "-":
                         this.result = -stack.pop() + stack.pop();
                         stack.push(this.result);
                         break;
-                    case '*':
+                    case "*":
                         this.result = stack.pop() * stack.pop();
                         stack.push(this.result);
                         break;
-                    case '/':
-                        float divider = stack.pop();
-                        this.result = stack.pop() / divider;
+                    case "/":
+                        this.result = (float) Math.pow(stack.pop(), -1) * stack.pop();
                         stack.push(this.result);
                         break;
-                    case '^':
+                    case "^":
                         float power = stack.pop();
                         this.result = (float) Math.pow(stack.pop(), power);
                         stack.push(this.result);
