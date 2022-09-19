@@ -30,8 +30,35 @@ public class Lesson005Task02 {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
         list.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
-        list.forEach(e -> sortedMap.put(e.getKey(), e.getValue()));
+        for (Map.Entry<String, Integer> entry : list) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
         return sortedMap;
+    }
+
+    public static HashMap<String, Integer> fillMap(ArrayList<String> employees) {
+        HashMap<String, Integer> unsortedMap = new HashMap<>();
+        Iterator<String> it = employees.iterator();
+
+        String[] employee;
+        String firstName;
+        String lastName;
+        while (it.hasNext()) {
+            employee = it.next().split(" ");
+            firstName = employee[0];
+            lastName = employee[1];
+
+            if (unsortedMap.containsKey(firstName)) {
+                Integer count = unsortedMap.get(firstName);
+                count++;
+                unsortedMap.put(firstName, count);
+
+            } else {
+                unsortedMap.put(firstName, 1);
+            }
+        }
+
+        return unsortedMap;
     }
 
     public static void main(String[] args) {
@@ -56,28 +83,10 @@ public class Lesson005Task02 {
                 "Петр Петин",
                 "Иван Ежов"));
 
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Integer> map;
         LinkedHashMap<String, Integer> sortedMap;
 
-        Iterator<String> it = employees.iterator();
-        String[] employee;
-        String firstName;
-        String lastName;
-        while (it.hasNext()) {
-            employee = it.next().split(" ");
-            firstName = employee[0];
-            lastName = employee[1];
-
-            if (map.containsKey(firstName)) {
-                Integer count = map.get(firstName);
-                count++;
-                map.put(firstName, count);
-
-            } else {
-                map.put(firstName, 1);
-            }
-        }
-
+        map = fillMap(employees);
         sortedMap = sortByValue(map);
 
         for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
