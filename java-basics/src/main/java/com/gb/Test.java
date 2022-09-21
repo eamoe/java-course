@@ -1,13 +1,14 @@
 package com.gb;
 
+import org.jetbrains.annotations.Contract;
+
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class Test {
 
@@ -16,6 +17,15 @@ public class Test {
     // A constant that is available by any method of any class
     // External availability through 'public' keyword
     public static final double PI = 3.14;
+
+    public static <E> boolean contains (Collection<E> c, Object obj) {
+        for (E element: c) {
+            if (element.equals(obj))
+                return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) throws IOException {
         final double CM_PER_INCH = 2.54; // Introduce a constant with 'final' keyword
 
@@ -52,6 +62,14 @@ public class Test {
         int [] copiedNumbers = Arrays.copyOf(intNumbers, 2 * intNumbers.length);
         //System.out.println(Arrays.toString(copiedNumbers));
 
-        
+        ArrayList<Integer> arrayList = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7));
+        //for (Integer integer : arrayList) {
+        //    System.out.println(integer);
+        //}
+        Iterator<Integer> it = arrayList.iterator();
+        //while (it.hasNext()) {
+        //    System.out.println(it.next());
+        //}
+        it.forEachRemaining(System.out::println);
     }
 }
