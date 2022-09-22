@@ -17,6 +17,8 @@ package com.gb;
 
 import java.util.*;
 
+import java.util.Comparator;
+
 public class Lesson006Task01 {
 
     static Set<Laptop> fillLaptopsSet() {
@@ -106,10 +108,33 @@ public class Lesson006Task01 {
 
         Map<String, Object> criteria = fillCriteriaMap();
 
-        System.out.println("Ноутбуки".toUpperCase());
-        System.out.println(laptops);
+        //System.out.println("Ноутбуки".toUpperCase());
+        //System.out.println(laptops);
 
-        System.out.println("Критерии".toUpperCase());
-        criteria.forEach((key, value) -> System.out.println(key + ":" + value));
+        //System.out.println("Критерии".toUpperCase());
+        //criteria.forEach((key, value) -> System.out.println(key + ":" + value));
+
+        String manufacturer = criteria.get("manufacturer").toString();
+        String processor = criteria.get("processor").toString();
+        String operatingSystem = criteria.get("operatingSystem").toString();
+        int hdd = Integer.parseInt(criteria.get("hdd").toString());
+        int ram = Integer.parseInt(criteria.get("ram").toString());
+        double screenDiagonal = Double.parseDouble(criteria.get("screenDiagonal").toString());
+        String color = criteria.get("color").toString();
+        Laptop targetLaptop = new Laptop(
+            manufacturer,
+            processor,
+            operatingSystem,
+            hdd,
+            ram,
+            screenDiagonal,
+            color);
+
+        Set<Laptop> treeLaptops = new TreeSet<>(laptops);
+        for (Laptop treeLaptop : treeLaptops) {
+            if (treeLaptop.compareTo(targetLaptop) >= 0) {
+                System.out.println(treeLaptop);
+            }
+        }
     }
 }

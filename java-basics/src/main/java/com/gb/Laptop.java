@@ -33,6 +33,22 @@ public class Laptop implements Comparable<Laptop> {
         this.color = color;
     }
 
+    public Laptop(String manufacturer,
+                  String processor,
+                  String operatingSystem,
+                  int hdd,
+                  int ram,
+                  double screenDiagonal,
+                  String color) {
+        this.manufacturer = manufacturer;
+        this.processor = processor;
+        this.operatingSystem = operatingSystem;
+        this.hdd = hdd;
+        this.ram = ram;
+        this.screenDiagonal = screenDiagonal;
+        this.color = color;
+    }
+
     public Laptop(int id,
                   int hdd,
                   int ram) {
@@ -136,6 +152,17 @@ public class Laptop implements Comparable<Laptop> {
 
     @Override
     public int compareTo(@NotNull Laptop o) {
-        return Integer.compare(this.ram, o.ram);
+        if (this.hdd >= o.hdd) {
+            if (this.ram >= o.ram) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
+        else {
+            return -1;
+        }
+
     }
 }
