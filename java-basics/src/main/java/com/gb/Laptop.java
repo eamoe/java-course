@@ -55,6 +55,11 @@ public class Laptop implements Comparable<Laptop> {
         this.id = id;
         this.hdd = hdd;
         this.ram = ram;
+        this.manufacturer = "";
+        this.processor = "";
+        this.operatingSystem = "";
+        this.screenDiagonal = 0.0;
+        this.color = "";
     }
 
     public int getId() {
@@ -126,10 +131,11 @@ public class Laptop implements Comparable<Laptop> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Laptop laptop = (Laptop) o;
-        return id == laptop.id
+        return hdd == laptop.hdd
             && ram == laptop.ram
             && processor.equals(laptop.processor)
-            && operatingSystem.equals(laptop.operatingSystem);
+            && operatingSystem.equals(laptop.operatingSystem)
+            && screenDiagonal == laptop.screenDiagonal;
     }
 
     @Override
@@ -152,13 +158,15 @@ public class Laptop implements Comparable<Laptop> {
 
     @Override
     public int compareTo(@NotNull Laptop o) {
-        if (this.hdd >= o.hdd) {
-            if (this.ram >= o.ram) {
-                return 1;
-            }
-            else {
-                return -1;
-            }
+        if (this.hdd >= o.hdd
+            && this.ram >= o.ram
+            && (this.processor.equals(o.processor) || o.processor.isEmpty())
+            && (this.operatingSystem.equals(o.operatingSystem) || o.operatingSystem.isEmpty())
+            && this.screenDiagonal >= o.screenDiagonal
+            && (this.manufacturer.equals(o.manufacturer) || o.manufacturer.isEmpty())
+            && (this.color.equals(o.color) || o.color.isEmpty())) {
+
+            return 1;
         }
         else {
             return -1;

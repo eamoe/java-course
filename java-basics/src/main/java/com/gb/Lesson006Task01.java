@@ -17,8 +17,6 @@ package com.gb;
 
 import java.util.*;
 
-import java.util.Comparator;
-
 public class Lesson006Task01 {
 
     static Set<Laptop> fillLaptopsSet() {
@@ -27,7 +25,7 @@ public class Lesson006Task01 {
         laptops.add(new Laptop(2, "Asus", "AMD", "Windows", 64, 16, 15.9, "Gold"));
         laptops.add(new Laptop(3, "Acer", "Intel", "Windows", 256, 8, 21, "Pink"));
         laptops.add(new Laptop(4, "Lenovo", "Intel", "Windows", 128, 32, 20, "Grey"));
-        laptops.add(new Laptop(5, "Apple", "M1", "MacOS", 512, 16, 13.9, "Space Grey"));
+        laptops.add(new Laptop(5, "Apple", "M1", "macOS", 512, 16, 13.9, "Space Grey"));
         laptops.add(new Laptop(6, 64, 4));
         laptops.add(new Laptop(7, 128, 32));
         laptops.add(new Laptop(8, 256, 16));
@@ -49,7 +47,7 @@ public class Lesson006Task01 {
 
         Map<String, Object> criteria = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Укажите параметры поиска или оставьте поле пустым:");
+        System.out.println("Укажите параметры поиска или оставьте поле пустым".toUpperCase());
         for (Pair message : criteriaMessages) {
             System.out.print(message.getValue() + ": ");
             String userInput = scanner.nextLine();
@@ -131,10 +129,15 @@ public class Lesson006Task01 {
             color);
 
         Set<Laptop> treeLaptops = new TreeSet<>(laptops);
+        boolean foundResults = false;
         for (Laptop treeLaptop : treeLaptops) {
             if (treeLaptop.compareTo(targetLaptop) >= 0) {
                 System.out.println(treeLaptop);
+                foundResults = true;
             }
+        }
+        if (!foundResults) {
+            System.out.println("Ничего не найдено!");
         }
     }
 }
