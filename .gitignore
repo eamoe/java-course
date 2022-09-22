@@ -8,6 +8,7 @@
 .idea/**/dictionaries
 .idea/**/shelf
 *.DS_Store
+.idea/compiler.xml
 
 # AWS User-specific
 .idea/**/aws.xml
