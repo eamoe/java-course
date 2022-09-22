@@ -106,12 +106,6 @@ public class Lesson006Task01 {
 
         Map<String, Object> criteria = fillCriteriaMap();
 
-        //System.out.println("Ноутбуки".toUpperCase());
-        //System.out.println(laptops);
-
-        //System.out.println("Критерии".toUpperCase());
-        //criteria.forEach((key, value) -> System.out.println(key + ":" + value));
-
         String manufacturer = criteria.get("manufacturer").toString();
         String processor = criteria.get("processor").toString();
         String operatingSystem = criteria.get("operatingSystem").toString();

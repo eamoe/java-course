@@ -160,11 +160,11 @@ public class Laptop implements Comparable<Laptop> {
     public int compareTo(@NotNull Laptop o) {
         if (this.hdd >= o.hdd
             && this.ram >= o.ram
-            && (this.processor.equals(o.processor) || o.processor.isEmpty())
-            && (this.operatingSystem.equals(o.operatingSystem) || o.operatingSystem.isEmpty())
+            && (this.processor.equalsIgnoreCase(o.processor) || o.processor.isEmpty())
+            && (this.operatingSystem.equalsIgnoreCase(o.operatingSystem) || o.operatingSystem.isEmpty())
             && this.screenDiagonal >= o.screenDiagonal
-            && (this.manufacturer.equals(o.manufacturer) || o.manufacturer.isEmpty())
-            && (this.color.equals(o.color) || o.color.isEmpty())) {
+            && (this.manufacturer.equalsIgnoreCase(o.manufacturer) || o.manufacturer.isEmpty())
+            && (this.color.equalsIgnoreCase(o.color) || o.color.isEmpty())) {
 
             return 1;
         }
