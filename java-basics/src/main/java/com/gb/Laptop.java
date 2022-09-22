@@ -17,9 +17,7 @@ package com.gb;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 public class Laptop implements Comparable<Laptop> {
 
@@ -140,36 +138,19 @@ public class Laptop implements Comparable<Laptop> {
 
     @Override
     public String toString() {
-        return "Laptop{" +
-            "id=" + id +
-            ", manufacturer='" + manufacturer + '\'' +
-            ", processor='" + processor + '\'' +
-            ", operatingSystem='" + operatingSystem + '\'' +
-            ", hdd=" + hdd +
-            ", ram=" + ram +
-            ", screenDiagonal=" + screenDiagonal +
-            ", color='" + color + '\'' +
-            '}';
+        return '\n' + "Laptop ".toUpperCase() +
+            "ID=" + id + '\n' +
+            "Manufacturer='" + manufacturer + '\'' + '\n' +
+            "Processor='" + processor + '\'' + '\n' +
+            "Operating System='" + operatingSystem + '\'' + '\n' +
+            "HDD=" + hdd + '\n' +
+            "RAM=" + ram + '\n' +
+            "Screen Diagonal=" + screenDiagonal + '\n' +
+            "Color='" + color + '\'' + '\n';
     }
 
     @Override
     public int compareTo(@NotNull Laptop o) {
         return Integer.compare(this.ram, o.ram);
-    }
-
-    public static void main(String[] args) {
-
-        Set<Laptop> laptops = new HashSet<>();
-
-        laptops.add(new Laptop(1, "Acer", "Intel", "Windows", 128, 8, 14.9, "Grey"));
-        laptops.add(new Laptop(2, "Asus", "AMD", "Windows", 64, 16, 15.9, "Gold"));
-        laptops.add(new Laptop(3, "Acer", "Intel", "Windows", 256, 8, 21, "Pink"));
-        laptops.add(new Laptop(4, "Lenovo", "Intel", "Windows", 128, 32, 20, "Grey"));
-        laptops.add(new Laptop(5, "Apple", "M1", "MacOS", 512, 16, 13.9, "Space Grey"));
-        laptops.add(new Laptop(6, 64, 4));
-        laptops.add(new Laptop(7, 128, 32));
-        laptops.add(new Laptop(8, 256, 16));
-        laptops.add(new Laptop(9, 512, 8));
-        laptops.add(new Laptop(10, 1024, 4));
     }
 }
