@@ -1,14 +1,26 @@
-package com.gb;
+// Подумать над структурой класса Ноутбук для магазина техники - выделить поля и методы.
+// Создать множество ноутбуков.
+// Написать метод, который будет запрашивать у пользователя критерий (или критерии) фильтрации
+// и выведет ноутбуки, отвечающие фильтру.
+// Критерии фильтрации можно хранить в Map.
+// Например:
+// “Введите цифру, соответствующую необходимому критерию:
+// 1 - ОЗУ
+// 2 - Объем ЖД
+// 3 - Операционная система
+// 4 - Цвет …
+// Далее нужно запросить минимальные значения
+// для указанных критериев - сохранить параметры фильтрации можно также в Map.
+// Отфильтровать ноутбуки из первоначального множества и вывести проходящие по условиям.
 
-import org.w3c.dom.ls.LSOutput;
+package com.gb;
 
 import java.util.*;
 
 public class Lesson006Task01 {
-    public static void main(String[] args) {
 
+    static Set<Laptop> fillLaptopsSet() {
         Set<Laptop> laptops = new HashSet<>();
-
         laptops.add(new Laptop(1, "Acer", "Intel", "Windows", 128, 8, 14.9, "Grey"));
         laptops.add(new Laptop(2, "Asus", "AMD", "Windows", 64, 16, 15.9, "Gold"));
         laptops.add(new Laptop(3, "Acer", "Intel", "Windows", 256, 8, 21, "Pink"));
@@ -19,37 +31,85 @@ public class Lesson006Task01 {
         laptops.add(new Laptop(8, 256, 16));
         laptops.add(new Laptop(9, 512, 8));
         laptops.add(new Laptop(10, 1024, 4));
+        return laptops;
+    }
 
-        System.out.println(laptops);
+    static Map<String, Object> fillCriteriaMap() {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Укажите параметры поиска или оставьте поле пустым:");
-        System.out.println("Производитель: ");
-        String manufacturer = scanner.nextLine();
-        System.out.println("Процессор: ");
-        String processor = scanner.nextLine();
-        System.out.println("Операционная система: ");
-        String operatingSystem = scanner.nextLine();
-        System.out.println("Емкость жесткого диска: ");
-        int hdd = Integer.parseInt(scanner.nextLine());
-        System.out.println("Оперативная память: ");
-        int ram = Integer.parseInt(scanner.nextLine());
-        System.out.println("Диагональ экрана: ");
-        double screenDiagonal = Double.parseDouble(scanner.nextLine());
-        System.out.println("Цвет: ");
-        String color = scanner.nextLine();
+        List<Pair> criteriaMessages = new ArrayList<>();
+        criteriaMessages.add(new Pair(0, "Производитель"));
+        criteriaMessages.add(new Pair(1, "Процессор"));
+        criteriaMessages.add(new Pair(2, "Операционная система"));
+        criteriaMessages.add(new Pair(3, "Емкость жесткого диска"));
+        criteriaMessages.add(new Pair(4, "Оперативная память"));
+        criteriaMessages.add(new Pair(5, "Диагональ экрана"));
+        criteriaMessages.add(new Pair(6, "Цвет"));
 
         Map<String, Object> criteria = new HashMap<>();
-        criteria.put("manufacturer", manufacturer);
-        criteria.put("processor", processor);
-        criteria.put("operatingSystem", operatingSystem);
-        criteria.put("hdd", hdd);
-        criteria.put("ram", ram);
-        criteria.put("screenDiagonal", screenDiagonal);
-        criteria.put("color", color);
-
-        for (String criterion: criteria.keySet()) {
-            System.out.println("key=" + criterion + "value type=" + criteria.get(criterion));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Укажите параметры поиска или оставьте поле пустым:");
+        for (Pair message : criteriaMessages) {
+            System.out.print(message.getValue() + ": ");
+            String userInput = scanner.nextLine();
+            switch (message.getKey()) {
+                case 0:
+                    criteria.put("manufacturer", userInput);
+                    break;
+                case 1:
+                    criteria.put("processor", userInput);
+                    break;
+                case 2:
+                    criteria.put("operatingSystem", userInput);
+                    break;
+                case 3:
+                    int hdd;
+                    if (userInput.isBlank()) {
+                        hdd = 0;
+                    }
+                    else {
+                        hdd = Integer.parseInt(userInput);
+                    }
+                    criteria.put("hdd", hdd);
+                    break;
+                case 4:
+                    int ram;
+                    if (userInput.isBlank()) {
+                        ram = 0;
+                    }
+                    else {
+                        ram = Integer.parseInt(userInput);
+                    }
+                    criteria.put("ram", ram);
+                    break;
+                case 5:
+                    double screenDiagonal;
+                    if (userInput.isBlank()) {
+                        screenDiagonal = 0.0;
+                    }
+                    else {
+                        screenDiagonal = Double.parseDouble(userInput);
+                    }
+                    criteria.put("screenDiagonal", screenDiagonal);
+                    break;
+                case 6:
+                    criteria.put("color", userInput);
+                    break;
+            }
         }
+
+        return criteria;
+    }
+
+    public static void main(String[] args) {
+
+        Set<Laptop> laptops = fillLaptopsSet();
+
+        Map<String, Object> criteria = fillCriteriaMap();
+
+        System.out.println("Ноутбуки".toUpperCase());
+        System.out.println(laptops);
+
+        System.out.println("Критерии".toUpperCase());
+        criteria.forEach((key, value) -> System.out.println(key + ":" + value));
     }
 }
