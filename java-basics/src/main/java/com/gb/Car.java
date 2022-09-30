@@ -3,7 +3,6 @@ package com.gb;
 public class Car extends Base {
 
     private final String modelName;
-
     private final String brand;
 
     public Car(String brand, String modelName) {
