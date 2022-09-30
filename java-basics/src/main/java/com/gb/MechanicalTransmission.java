@@ -15,4 +15,17 @@ public class MechanicalTransmission extends Transmission {
         }
         System.out.printf("Gear shifted to %d. Direction: %s%n", getGearNumber(), getDirection());
     }
+
+    @Override
+    public boolean isParkable() {
+        if (getDirection() == Movement.NEUTRAL) {
+            System.out.println("Transmission is ready to be parked");
+            return true;
+        }
+        else {
+            System.out.println("Transmission cannot be parked");
+            return false;
+        }
+    }
+
 }

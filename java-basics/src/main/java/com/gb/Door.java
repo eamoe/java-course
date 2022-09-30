@@ -1,6 +1,6 @@
 package com.gb;
 
-public class Door implements Checkable {
+public class Door implements Checkable, Parkable {
 
     private boolean isOpen;
     private boolean isLocked;
@@ -65,4 +65,15 @@ public class Door implements Checkable {
         System.out.println("Door is ok");
     }
 
+    @Override
+    public boolean isParkable() {
+        if (isLocked()) {
+            System.out.println("Door is locked and ready to be parked");
+            return true;
+        }
+        else {
+            System.out.println("Door is not locked and cannot be parked");
+            return false;
+        }
+    }
 }

@@ -19,15 +19,28 @@ public class Car extends Base {
     }
 
     public void getInCar(String person, int doorNumber) {
-        System.out.printf("%s gets in the car...%n", person);
+        String message = String.format("%s gets in the car...%n", person);
+        System.out.printf(message.toUpperCase());
         this.openDoor(doorNumber);
         this.closeDoor(doorNumber);
     }
 
     public void getOutCar(String person, int doorNumber) {
-        System.out.printf("%s gets out the car...%n", person);
+        String message = String.format("%s gets out the car...%n", person);
+        System.out.printf(message.toUpperCase());
         this.openDoor(doorNumber);
         this.closeDoor(doorNumber);
+    }
+
+    public void park() {
+        System.out.println("Parking the car...".toUpperCase());
+        this.lockAllDoors();
+        if (!checkParkables()) {
+            System.out.println("The car cannot be parked. Please fix the issues");
+        }
+        else {
+            System.out.println("The car was parked successfully!");
+        }
     }
 
 }

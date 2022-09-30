@@ -16,6 +16,7 @@ public class Base {
     private Door door4;
     private AirConditioning airConditioning;
     private List<Checkable> checkables;
+    private List<Parkable> parkables;
 
     public Base() {
         engine = new ElectricEngine();
@@ -43,16 +44,23 @@ public class Base {
                             door3,
                             door4,
                             airConditioning);
+        parkables = List.of(
+                            transmission,
+                            door1,
+                            door2,
+                            door3,
+                            door4);
         }
 
     public void start() {
+        System.out.println("Checking all components...".toUpperCase());
         this.checkAll();
         this.engine.start();
+        this.lockAllDoors();
     }
 
     public void drive (Movement direction) {
         if (engine.getIsRunning()) {
-            this.lockAllDoors();
             switch (direction) {
                 case FORWARD:
                     transmission.switchGear(1);
@@ -76,6 +84,7 @@ public class Base {
     }
 
     public void stop() {
+        this.transmission.switchGear(0);
         this.engine.stop();
     }
 
@@ -190,6 +199,7 @@ public class Base {
     }
 
     public void lockAllDoors() {
+        System.out.println("Locking all doors...".toUpperCase());
         this.lockDoor(1);
         this.lockDoor(2);
         this.lockDoor(3);
@@ -239,6 +249,7 @@ public class Base {
     }
 
     public void unlockAllDoors() {
+        System.out.println("Unlocking all doors...".toUpperCase());
         this.unlockDoor(1);
         this.unlockDoor(2);
         this.unlockDoor(3);
@@ -252,6 +263,15 @@ public class Base {
             checkable = it.next();
             checkable.check();
         }
+    }
+
+    public boolean checkParkables() {
+        ListIterator<Parkable> it = parkables.listIterator();
+        boolean check = true;
+        while(it.hasNext()) {
+            check = check && it.next().isParkable();
+        }
+        return check;
     }
 
 }

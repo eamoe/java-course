@@ -2,7 +2,7 @@ package com.gb;
 
 enum Movement {BACKWARD, NEUTRAL, FORWARD}
 
-public abstract class Transmission implements Checkable {
+public abstract class Transmission implements Checkable, Parkable {
     private int gearNumber;
 
     private Movement movement;
