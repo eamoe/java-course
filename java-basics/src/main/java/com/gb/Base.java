@@ -1,7 +1,5 @@
 package com.gb;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 public class Base {
@@ -25,7 +23,7 @@ public class Base {
         wheel2 = new Wheel();
         wheel3 = new Wheel();
         wheel4 = new Wheel();
-        transmission = new Transmission();
+        transmission = new AutomaticTransmission();
         steeringWheel = new SteeringWheel();
         door1 = new Door();
         door2 = new Door();
@@ -54,6 +52,7 @@ public class Base {
 
     public void drive (Movement direction) {
         if (engine.getIsRunning()) {
+            this.lockAllDoors();
             switch (direction) {
                 case FORWARD:
                     transmission.switchGear(1);
@@ -220,7 +219,7 @@ public class Base {
         }
     }
     public void turnOnAirConditioning() {
-        if (this.isEngineRunning()) {
+        if (!this.isEngineRunning()) {
             System.out.println("Cannot turn air conditioning on. The engine is not running!");
         }
         else {
@@ -230,8 +229,8 @@ public class Base {
     }
 
     public void turnOffAirConditioning() {
-        if (this.isEngineRunning()) {
-            System.out.println("Air conditioning is already turned off");
+        if (!this.isEngineRunning()) {
+            System.out.println("Air conditioning has already been turned off");
         }
         else {
             this.airConditioning.turnOff();

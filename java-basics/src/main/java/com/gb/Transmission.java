@@ -2,24 +2,14 @@ package com.gb;
 
 enum Movement {BACKWARD, NEUTRAL, FORWARD}
 
-public class Transmission implements Checkable {
+public abstract class Transmission implements Checkable {
     private int gearNumber;
 
     private Movement movement;
 
     public void switchGear (int gearNumber) {
-        setGearNumber(gearNumber);
-
-        if (getGearNumber() == 0) {
-            setDirection(Movement.NEUTRAL);
-        } else if (getGearNumber() < 0) {
-            setDirection(Movement.BACKWARD);
-        }
-        else {
-            setDirection(Movement.FORWARD);
-        }
-
-        System.out.printf("Gear shifted to %d. Direction: %s%n", getGearNumber(), getDirection());
+        System.out.println("Transmission...".toUpperCase());
+        switchGearInternal(gearNumber);
     }
 
     public int getGearNumber() {
@@ -41,5 +31,7 @@ public class Transmission implements Checkable {
     public void check() {
         System.out.println("Transmission is ok");
     }
+
+    public abstract void switchGearInternal(int gearNumber);
 
 }
