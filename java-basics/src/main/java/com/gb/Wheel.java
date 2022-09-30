@@ -1,6 +1,6 @@
 package com.gb;
 
-public class Wheel {
+public class Wheel implements Checkable {
 
     public void rotate() {
         System.out.println("Wheel is spinning...");
@@ -16,6 +16,11 @@ public class Wheel {
 
     public void moveStraight() {
         System.out.println("The wheel was turned straight");
+    }
+
+    @Override
+    public void check() {
+        System.out.println("Wheel is ok");
     }
 
 }

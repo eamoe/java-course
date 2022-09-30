@@ -2,7 +2,7 @@ package com.gb;
 
 enum Movement {BACKWARD, NEUTRAL, FORWARD}
 
-public class Transmission {
+public class Transmission implements Checkable {
     private int gearNumber;
 
     private Movement movement;
@@ -36,6 +36,10 @@ public class Transmission {
 
     public void setDirection(Movement movement) {
         this.movement = movement;
+    }
+    @Override
+    public void check() {
+        System.out.println("Transmission is ok");
     }
 
 }

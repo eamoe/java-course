@@ -1,6 +1,6 @@
 package com.gb;
 
-public class AirConditioning {
+public class AirConditioning implements Checkable {
 
     private boolean isOn;
 
@@ -10,6 +10,10 @@ public class AirConditioning {
 
     public void turnOff() {
         this.isOn = false;
+    }
+    @Override
+    public void check() {
+        System.out.println("Air conditioning is ok");
     }
 
 }

@@ -2,7 +2,7 @@ package com.gb;
 
 enum Direction {STRAIGHT, LEFT, RIGHT};
 
-public class SteeringWheel {
+public class SteeringWheel implements Checkable {
 
     private Direction direction;
 
@@ -19,6 +19,10 @@ public class SteeringWheel {
     public void moveStraight() {
         this.direction = Direction.STRAIGHT;
         System.out.println("Moving straight...");
+    }
+    @Override
+    public void check() {
+        System.out.println("Steering wheel is ok");
     }
 
 }

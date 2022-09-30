@@ -11,7 +11,7 @@ public class Lesson007Task01 {
 
     public static void main(String[] args) {
 
-        Car car = new Car();
+        Car car = new Car("Mustang", "Ford");
         System.out.printf("Car brand: %s%nCar model: %s%n", car.getBrand(), car.getModelName());
         car.getInCar("Driver", 1);
         car.getInCar("Passenger", 2);

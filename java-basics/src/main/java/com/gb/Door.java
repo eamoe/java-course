@@ -1,6 +1,6 @@
 package com.gb;
 
-public class Door {
+public class Door implements Checkable {
 
     private boolean isOpen;
     private boolean isLocked;
@@ -59,6 +59,10 @@ public class Door {
 
     public void setLocked(boolean locked) {
         isLocked = locked;
+    }
+    @Override
+    public void check() {
+        System.out.println("Door is ok");
     }
 
 }
