@@ -2,24 +2,18 @@ package com.gb.Lesson010;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class Box<T extends Fruit> {
+public class Box<T extends Fruit> implements Comparable<Box<T>> {
 
     private final float maxBoxWeight;
     private final float emptyBoxWeight;
     private final ArrayList<T> boxContents;
 
-    private final int quantity;
-
     public Box(float emptyBoxWeight, float maxBoxWeight) {
         this.maxBoxWeight = maxBoxWeight;
         this.emptyBoxWeight = emptyBoxWeight;
         this.boxContents = new ArrayList<>();
-        this.quantity = 0;
     }
 
     public float getWeight() {
@@ -40,6 +34,15 @@ public class Box<T extends Fruit> {
             System.out.printf("Фрукт добавлен (%s)%n", fruit.name());
         }
 
+    }
+
+    public boolean compare(Box<?> o) {
+        return this.compareTo(o) == 0;
+    }
+
+    @Override
+    public int compareTo(@NotNull Box o) {
+        return Float.compare(this.getWeight(), o.getWeight());
     }
 
 }
