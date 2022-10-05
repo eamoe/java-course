@@ -26,33 +26,10 @@ public class Lesson010Task01 {
 
     public static void main(String[] args) {
 
-        List<Fruit> fruits = new ArrayList<>();
-
-        fruits.add(new Apple());
-        fruits.add(new Apple());
-        fruits.add(new Apple());
-        fruits.add(new Apple());
-        fruits.add(new Apple());
-
-        fruits.add(new Orange());
-        fruits.add(new Orange());
-        fruits.add(new Orange());
-        fruits.add(new Orange());
-        fruits.add(new Orange());
-
         Box<Apple> box1 = new Box<>(0.5f, 10);
-        System.out.println(box1.boxWeight());
+        System.out.printf("Текущий вес коробки: %.2f%n", box1.getWeight());
         box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        box1.addFruit(new Apple());
-        System.out.println(box1.boxWeight());
+
     }
 
 }
