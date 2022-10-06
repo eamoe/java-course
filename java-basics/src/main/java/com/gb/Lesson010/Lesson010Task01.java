@@ -55,6 +55,12 @@ public class Lesson010Task01 {
             System.out.println("Коробки отличаются по весу");
         }
 
+        Box<Orange> box3 = new Box<>(0.5f, 10);
+        box3.addFruit(new Orange());
+        Box.moveContentsTo(box1, box3);
+        System.out.println(box1.getWeight());
+        System.out.println(box3.getWeight());
+
     }
 
 }

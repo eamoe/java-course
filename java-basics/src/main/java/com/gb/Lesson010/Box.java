@@ -45,4 +45,21 @@ public class Box<T extends Fruit> implements Comparable<Box<T>> {
         return Float.compare(this.getWeight(), o.getWeight());
     }
 
+    public ArrayList<T> getBoxContents() {
+        return boxContents;
+    }
+
+    public static <T extends Fruit> void moveContentsTo(Box<? extends Fruit> fromBox, Box<? super T> toBox) {
+        ArrayList<? extends Fruit> fromContents = fromBox.getBoxContents();
+        ArrayList<? super T> toContents = toBox.getBoxContents();
+        Iterator<? extends Fruit> iterator = fromContents.listIterator();
+
+        while (iterator.hasNext()) {
+            Fruit fruit = iterator.next();
+            toContents.add((T) fruit);
+            iterator.remove();
+            System.out.println(fruit.name());
+        }
+    }
+
 }
