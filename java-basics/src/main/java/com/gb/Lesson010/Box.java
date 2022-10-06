@@ -9,10 +9,12 @@ public class Box<T extends Fruit> implements Comparable<Box<T>> {
     private final float maxBoxWeight;
     private final float emptyBoxWeight;
     private final ArrayList<T> boxContents;
+    private float currentBoxWeight;
 
     public Box(float emptyBoxWeight, float maxBoxWeight) {
         this.maxBoxWeight = maxBoxWeight;
         this.emptyBoxWeight = emptyBoxWeight;
+        this.currentBoxWeight = emptyBoxWeight;
         this.boxContents = new ArrayList<>();
     }
 
@@ -24,6 +26,14 @@ public class Box<T extends Fruit> implements Comparable<Box<T>> {
         return overallWeight;
     }
 
+    public float getMaxBoxWeight() {
+        return maxBoxWeight;
+    }
+
+    public float getCurrentBoxWeight() {
+        return currentBoxWeight;
+    }
+
     public void addFruit(T fruit) {
 
         if ((getWeight() + fruit.weight()) > this.maxBoxWeight) {
@@ -31,6 +41,7 @@ public class Box<T extends Fruit> implements Comparable<Box<T>> {
         }
         else {
             this.boxContents.add(fruit);
+            this.currentBoxWeight += fruit.weight();
             System.out.printf("Фрукт добавлен (%s)%n", fruit.name());
         }
 
@@ -49,16 +60,27 @@ public class Box<T extends Fruit> implements Comparable<Box<T>> {
         return boxContents;
     }
 
-    public static <T extends Fruit> void moveContentsTo(Box<? extends Fruit> fromBox, Box<? super T> toBox) {
+    public static <T extends Fruit> void moveContentsTo(Box<? extends T> fromBox,
+                                                        Box<? super T> toBox,
+                                                        float maxDestWeight,
+                                                        float currentDestWeight) {
+
         ArrayList<? extends Fruit> fromContents = fromBox.getBoxContents();
         ArrayList<? super T> toContents = toBox.getBoxContents();
+
         Iterator<? extends Fruit> iterator = fromContents.listIterator();
 
         while (iterator.hasNext()) {
             Fruit fruit = iterator.next();
-            toContents.add((T) fruit);
-            iterator.remove();
-            System.out.println(fruit.name());
+            if (currentDestWeight + fruit.weight() > maxDestWeight) {
+                System.out.println("Невозможно добавить еще один фрукт. Коробка полна!");
+                break;
+            }
+            else {
+                toContents.add((T)fruit);
+                iterator.remove();
+                currentDestWeight += fruit.weight();
+            }
         }
     }
 
