@@ -37,12 +37,14 @@ public class Presenter {
     }
 
     public void execute() {
-        float firstNumber = view.getNumber("Enter first numbers: ");
+        float firstNumberReal = view.getNumber("First number (real): ");
+        float firstNumberImag = view.getNumber("First number (imag): ");
         this.setOperation(view.getOperation("Enter operation: "));
         this.setModel(this.getOperation());
-        float secondNumber = view.getNumber("Enter second numbers: ");
-        model.setFirstNumber(firstNumber);
-        model.setSecondNumber(secondNumber);
+        float secondNumberReal = view.getNumber("Second number (real): ");
+        float secondNumberImag = view.getNumber("Second number (imag): ");
+        model.setFirstNumber(new ComplexNumber(firstNumberReal, firstNumberImag));
+        model.setSecondNumber(new ComplexNumber(secondNumberReal, secondNumberImag));
         view.print(model.title() + model.calc());
     }
 

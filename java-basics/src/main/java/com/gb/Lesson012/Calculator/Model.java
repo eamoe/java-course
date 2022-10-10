@@ -2,10 +2,10 @@ package com.gb.Lesson012.Calculator;
 
 public interface Model {
 
-    void setFirstNumber(float number);
-    void setSecondNumber(float number);
+    void setFirstNumber(ComplexNumber number);
+    void setSecondNumber(ComplexNumber number);
 
-    float calc();
+    ComplexNumber calc();
 
     String title();
 

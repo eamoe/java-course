@@ -1,23 +1,27 @@
 package com.gb.Lesson012.Calculator;
 
 public class MultiModel implements Model {
-    private float firstNumber;
+    private ComplexNumber firstNumber;
 
-    private float secondNumber;
+    private ComplexNumber secondNumber;
 
     @Override
-    public void setFirstNumber(float number) {
+    public void setFirstNumber(ComplexNumber number) {
         this.firstNumber = number;
     }
 
     @Override
-    public void setSecondNumber(float number) {
+    public void setSecondNumber(ComplexNumber number) {
         this.secondNumber = number;
     }
 
     @Override
-    public float calc() {
-        return this.firstNumber * this.secondNumber;
+    public ComplexNumber calc() {
+        float real = this.firstNumber.getReal() * this.secondNumber.getReal()
+            - this.firstNumber.getImag() * this.secondNumber.getImag();
+        float imag = this.firstNumber.getReal() * this.secondNumber.getImag()
+            + this.firstNumber.getImag() * this.secondNumber.getReal();
+        return new ComplexNumber(real, imag);
     }
 
     @Override

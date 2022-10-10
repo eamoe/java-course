@@ -1,22 +1,28 @@
 package com.gb.Lesson012.Calculator;
 
 public class DivModel implements Model {
-    private float firstNumber;
+    private ComplexNumber firstNumber;
 
-    private float secondNumber;
+    private ComplexNumber secondNumber;
     @Override
-    public void setFirstNumber(float number) {
+    public void setFirstNumber(ComplexNumber number) {
         this.firstNumber = number;
     }
 
     @Override
-    public void setSecondNumber(float number) {
+    public void setSecondNumber(ComplexNumber number) {
         this.secondNumber = number;
     }
 
     @Override
-    public float calc() {
-        return this.firstNumber / this.secondNumber;
+    public ComplexNumber calc() {
+        float realTop = this.firstNumber.getReal() * this.secondNumber.getReal()
+            + this.firstNumber.getImag() * this.secondNumber.getImag();
+        float bottom = this.secondNumber.getReal() * this.secondNumber.getReal()
+            + this.secondNumber.getImag() * this.secondNumber.getImag();
+        float imagTop = this.firstNumber.getImag() * this.secondNumber.getReal()
+            - this.firstNumber.getReal() * this.secondNumber.getImag();
+        return new ComplexNumber(realTop / bottom, imagTop / bottom);
     }
 
     @Override

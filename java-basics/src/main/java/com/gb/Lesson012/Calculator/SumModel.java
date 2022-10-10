@@ -2,23 +2,25 @@ package com.gb.Lesson012.Calculator;
 
 public class SumModel implements Model {
 
-    private float firstNumber;
+    private ComplexNumber firstNumber;
 
-    private float secondNumber;
+    private ComplexNumber secondNumber;
 
     @Override
-    public void setFirstNumber(float number) {
+    public void setFirstNumber(ComplexNumber number) {
         this.firstNumber = number;
     }
 
     @Override
-    public void setSecondNumber(float number) {
+    public void setSecondNumber(ComplexNumber number) {
         this.secondNumber = number;
     }
 
     @Override
-    public float calc() {
-        return this.firstNumber + this.secondNumber;
+    public ComplexNumber calc() {
+        return new ComplexNumber(
+            this.firstNumber.getReal() + this.secondNumber.getReal(),
+            this.firstNumber.getImag() + this.secondNumber.getImag());
     }
 
     @Override

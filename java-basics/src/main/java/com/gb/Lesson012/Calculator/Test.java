@@ -2,19 +2,19 @@ package com.gb.Lesson012.Calculator;
 
 public class Test {
 
-    private float firstNumber;
-    private float secondNumber;
-    private float sumResult;
-    private float subResult;
-    private float multiResult;
-    private float divResult;
+    private ComplexNumber firstNumber;
+    private ComplexNumber secondNumber;
+    private ComplexNumber sumResult;
+    private ComplexNumber subResult;
+    private ComplexNumber multiResult;
+    private ComplexNumber divResult;
 
-    public Test(float firstNumber,
-                 float secondNumber,
-                 float sumResult,
-                 float subResult,
-                 float multiResult,
-                 float divResult) {
+    public Test(ComplexNumber firstNumber,
+                ComplexNumber secondNumber,
+                ComplexNumber sumResult,
+                ComplexNumber subResult,
+                ComplexNumber multiResult,
+                ComplexNumber divResult) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
         this.sumResult = sumResult;
@@ -23,39 +23,47 @@ public class Test {
         this.divResult = divResult;
     }
 
-    public float getFirstNumber() {
+    public ComplexNumber getFirstNumber() {
         return firstNumber;
     }
 
-    public float getSecondNumber() {
+    public ComplexNumber getSecondNumber() {
         return secondNumber;
     }
 
-    public float getSumResult() {
+    public ComplexNumber getSumResult() {
         return sumResult;
     }
 
-    public float getSubResult() {
+    public ComplexNumber getSubResult() {
         return subResult;
     }
 
-    public float getMultiResult() {
+    public ComplexNumber getMultiResult() {
         return multiResult;
     }
 
-    public float getDivResult() {
+    public ComplexNumber getDivResult() {
         return divResult;
     }
 
     public static void main(String[] args) {
 
         Test test = new Test(
-            1,
-            1,
-            2,
-            0,
-            1,
-            1);
+            new ComplexNumber(2, 7), // First number
+            new ComplexNumber(3, 5), // second number
+            new ComplexNumber(5, 12), // Sum
+            new ComplexNumber(-1, 2), // Subtraction
+            new ComplexNumber(-29, 31), // Multiplication
+            new ComplexNumber(41/34f, 11/34f)); // Division
+
+//        Test test = new Test(
+//            new ComplexNumber(8, 0), // First number
+//            new ComplexNumber(4, 0), // second number
+//            new ComplexNumber(12, 0), // Sum
+//            new ComplexNumber(4, 0), // Subtraction
+//            new ComplexNumber(32, 0), // Multiplication
+//            new ComplexNumber(2f, 0)); // Division
 
         Model sumModel = new SumModel();
         sumModel.setFirstNumber(test.getFirstNumber());
@@ -73,16 +81,16 @@ public class Test {
         divModel.setFirstNumber(test.getFirstNumber());
         divModel.setSecondNumber(test.getSecondNumber());
 
-        if (sumModel.calc() != test.getSumResult()) {
+        if (sumModel.calc().compareTo(test.getSumResult()) != 0) {
             throw new AssertionError("Incorrect result: SumModel");
         }
-        if (subModel.calc() != test.getSubResult()) {
+        if (subModel.calc().compareTo(test.getSubResult()) != 0) {
             throw new AssertionError("Incorrect result: SubModel");
         }
-        if (multiModel.calc() != test.getMultiResult()) {
+        if (multiModel.calc().compareTo(test.getMultiResult()) != 0) {
             throw new AssertionError("Incorrect result: MultiModel");
         }
-        if (divModel.calc() != test.getDivResult()) {
+        if (divModel.calc().compareTo(test.getDivResult()) != 0) {
             throw new AssertionError("Incorrect result: DivModel");
         }
 
