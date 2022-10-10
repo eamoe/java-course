@@ -10,10 +10,9 @@ import java.util.Scanner;
 public class Calculator {
 
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        Model model = new SumModel();
-        View view = new ViewImplementation(scn, System.out);
-        Presenter presenter = new Presenter(model, view);
+        Scanner scanner = new Scanner(System.in);
+        View view = new ViewImplementation(scanner, System.out);
+        Presenter presenter = new Presenter(view);
         presenter.execute();
     }
 
