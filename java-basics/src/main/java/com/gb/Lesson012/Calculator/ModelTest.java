@@ -1,6 +1,6 @@
 package com.gb.Lesson012.Calculator;
 
-public class Test {
+public class ModelTest {
 
     private ComplexNumber firstNumber;
     private ComplexNumber secondNumber;
@@ -9,7 +9,7 @@ public class Test {
     private ComplexNumber multiResult;
     private ComplexNumber divResult;
 
-    public Test(ComplexNumber firstNumber,
+    public ModelTest(ComplexNumber firstNumber,
                 ComplexNumber secondNumber,
                 ComplexNumber sumResult,
                 ComplexNumber subResult,
@@ -49,7 +49,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        Test test = new Test(
+        ModelTest test = new ModelTest(
             new ComplexNumber(2, 7), // First number
             new ComplexNumber(3, 5), // second number
             new ComplexNumber(5, 12), // Sum
@@ -57,7 +57,7 @@ public class Test {
             new ComplexNumber(-29, 31), // Multiplication
             new ComplexNumber(41/34f, 11/34f)); // Division
 
-//        Test test = new Test(
+//        ModelTest test = new ModelTest(
 //            new ComplexNumber(8, 0), // First number
 //            new ComplexNumber(4, 0), // second number
 //            new ComplexNumber(12, 0), // Sum
