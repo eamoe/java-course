@@ -2,20 +2,20 @@ package com.gb.Lesson012.Calculator;
 
 public class Presenter {
 
-    private final SumModel model;
+    private final Model model;
 
     private final View view;
 
-    public Presenter(SumModel model, View view) {
+    public Presenter(Model model, View view) {
         this.model = model;
         this.view = view;
     }
 
     public void execute() {
-        model.setFirst(view.getValue("Enter first number "));
-        model.setSecond(view.getValue("Enter second number "));
+        model.setFirstNumber(view.getValue("Enter first number "));
+        model.setSecondNumber(view.getValue("Enter second number "));
 
-        view.print("Sum is " + model.getSum());
+        view.print("Sum is " + model.calc());
     }
 
     private static class MockView implements View {
@@ -41,7 +41,7 @@ public class Presenter {
     }
 
     public static void main(String[] args) {
-        SumModel sumModel = new SumModel();
+        Model sumModel = new SumModel();
         MockView mockView = new MockView();
         Presenter presenter = new Presenter(sumModel, mockView);
 

@@ -11,9 +11,9 @@ public class Calculator {
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        SumModel sumModel = new SumModel();
+        Model model = new SumModel();
         View view = new ViewImplementation(scn, System.out);
-        Presenter presenter = new Presenter(sumModel, view);
+        Presenter presenter = new Presenter(model, view);
         presenter.execute();
     }
 

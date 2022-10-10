@@ -1,43 +1,23 @@
 package com.gb.Lesson012.Calculator;
 
-public class SumModel {
+public class SumModel implements Model {
 
-    private int first;
+    private int firstNumber;
 
-    private int second;
+    private int secondNumber;
 
-    public void setFirst(int first) {
-        this.first = first;
+    @Override
+    public void setFirstNumber(int number) {
+        this.firstNumber = number;
     }
 
-    public void setSecond(int second) {
-        this.second = second;
+    @Override
+    public void setSecondNumber(int number) {
+        this.secondNumber = number;
     }
 
-    public int getSum() {
-        return first + second;
+    @Override
+    public int calc() {
+        return this.firstNumber + this.secondNumber;
     }
-
-    public static void main(String[] args) {
-        SumModel sumModel = new SumModel();
-
-        sumModel.setFirst(1);
-        sumModel.setSecond(1);
-        if (sumModel.getSum() != 2) {
-            throw new AssertionError("Incorrect test result");
-        }
-
-        sumModel.setFirst(1);
-        sumModel.setSecond(2);
-        if (sumModel.getSum() != 3) {
-            throw new AssertionError("Incorrect test result");
-        }
-
-        sumModel.setFirst(2);
-        sumModel.setSecond(3);
-        if (sumModel.getSum() != 5) {
-            throw new AssertionError("Incorrect test result");
-        }
-    }
-
 }
