@@ -15,7 +15,7 @@ public class Presenter {
         model.setFirstNumber(view.getValue("Enter first number "));
         model.setSecondNumber(view.getValue("Enter second number "));
 
-        view.print("Sum is " + model.calc());
+        view.print(model.title() + model.calc());
     }
 
     private static class MockView implements View {

@@ -1,7 +1,6 @@
 package com.gb.Lesson012.Calculator;
 
-public class SumModel implements Model {
-
+public class MultiModel implements Model {
     private float firstNumber;
 
     private float secondNumber;
@@ -18,11 +17,11 @@ public class SumModel implements Model {
 
     @Override
     public float calc() {
-        return this.firstNumber + this.secondNumber;
+        return this.firstNumber * this.secondNumber;
     }
 
     @Override
     public String title() {
-        return "The addition result is ";
+        return "The multiplication result is ";
     }
 }

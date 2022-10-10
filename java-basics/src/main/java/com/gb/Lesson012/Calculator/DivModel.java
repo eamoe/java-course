@@ -1,11 +1,9 @@
 package com.gb.Lesson012.Calculator;
 
-public class SumModel implements Model {
-
+public class DivModel implements Model {
     private float firstNumber;
 
     private float secondNumber;
-
     @Override
     public void setFirstNumber(float number) {
         this.firstNumber = number;
@@ -18,11 +16,11 @@ public class SumModel implements Model {
 
     @Override
     public float calc() {
-        return this.firstNumber + this.secondNumber;
+        return this.firstNumber / this.secondNumber;
     }
 
     @Override
     public String title() {
-        return "The addition result is ";
+        return "The division result is ";
     }
 }

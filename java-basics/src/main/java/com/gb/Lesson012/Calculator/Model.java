@@ -2,10 +2,12 @@ package com.gb.Lesson012.Calculator;
 
 public interface Model {
 
-    void setFirstNumber(int number);
-    void setSecondNumber(int number);
+    void setFirstNumber(float number);
+    void setSecondNumber(float number);
 
-    int calc();
+    float calc();
+
+    String title();
 
 //    public static void main(String[] args) {
 //        Model model = new Model();
