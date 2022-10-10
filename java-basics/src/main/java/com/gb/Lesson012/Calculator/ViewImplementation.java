@@ -15,9 +15,9 @@ public class ViewImplementation implements View {
     }
 
     @Override
-    public int getValue(String message) {
+    public float getValue(String message) {
         out.print(message);
-        return scn.nextInt();
+        return scn.nextFloat();
     }
 
     @Override

@@ -18,38 +18,4 @@ public class Presenter {
         view.print(model.title() + model.calc());
     }
 
-    private static class MockView implements View {
-
-        private int count = 0;
-
-        @Override
-        public int getValue(String message) {
-            count++;
-            return 1;
-        }
-
-        @Override
-        public void print(String message) {
-            if (!message.equals("Sum is 2")) {
-                throw new AssertionError("Incorrect sum");
-            }
-        }
-
-        public int getCount() {
-            return count;
-        }
-    }
-
-    public static void main(String[] args) {
-        Model sumModel = new SumModel();
-        MockView mockView = new MockView();
-        Presenter presenter = new Presenter(sumModel, mockView);
-
-        presenter.execute();
-        if (mockView.getCount() != 2) {
-            throw new AssertionError("Incorrect call of getValue()");
-        }
-    }
-
-
 }
