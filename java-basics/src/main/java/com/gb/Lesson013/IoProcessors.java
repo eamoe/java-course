@@ -1,10 +1,11 @@
 package com.gb.Lesson013;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
@@ -25,7 +26,15 @@ public class IoProcessors {
                 writer.println("HTTP/1.1 200 OK");
                 writer.println("Content-Type: text/html; charset=utf-8");
                 writer.println();
-                writer.println("<h1>It's directory</h1>");
+                writer.println("<h1>" + path + "</h1>");
+                List<String> items =  FolderReader.listDirectory(path, 0);
+                Iterator<String> iterator = items.iterator();
+                while (iterator.hasNext()) {
+                    String item = iterator.next();
+                    writer.println(item);
+                    writer.println("<br>");
+                    iterator.remove();
+                }
                 // TODO дописать вывод списка файлов в данной директории
             },
 
