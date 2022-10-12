@@ -8,18 +8,19 @@ public class FolderReader {
 
     private static final ArrayList<String> list = new ArrayList<>();
 
-    public static ArrayList<String> listDirectory(Path path, int level) {
+    public static ArrayList<String> listDirectory(Path path) {
         File dir = new File(path.toString());
         File[] firstLevelFiles = dir.listFiles();
         if (firstLevelFiles != null && firstLevelFiles.length > 0) {
             for (File aFile : firstLevelFiles) {
-                int margin = 30 * level;
                 if (aFile.isDirectory()) {
-                    list.add("<a href=\"" + aFile.getName() + "/" + "\"STYLE=\"margin-left:" + margin + "px\">" + aFile.getName() + "</a>");
-                    //listDirectory(aFile.toPath(), level + 1);
+                    list.add("<a href=\"" + aFile.getName() + "/" + "\">" + aFile.getName() + "</a>");
                 } else {
-                    list.add("<a href=\"" + aFile.getName() + "\" target=\"_blank\" STYLE=\"margin-left:" + margin + "px\">" + aFile.getName() + "</a>");
+                    list.add("<a href=\"" + aFile.getName() + "\" target=\"_blank\">" + aFile.getName() + "</a>");
                 }
+            }
+            if (!path.toString().equals(".")) {
+                list.add("<a href=\"" + "../" + "\">" + "<--" + "</a>" + "<br>");
             }
         }
         return list;

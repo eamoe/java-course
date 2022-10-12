@@ -27,7 +27,7 @@ public class IoProcessors {
                 writer.println("Content-Type: text/html; charset=utf-8");
                 writer.println();
                 writer.println("<h1>" + path + "</h1>");
-                List<String> items =  FolderReader.listDirectory(path, 0);
+                List<String> items =  FolderReader.listDirectory(path);
                 Iterator<String> iterator = items.iterator();
                 while (iterator.hasNext()) {
                     String item = iterator.next();
@@ -35,7 +35,6 @@ public class IoProcessors {
                     writer.println("<br>");
                     iterator.remove();
                 }
-                // TODO дописать вывод списка файлов в данной директории
             },
 
             path -> !Files.isReadable(path),
