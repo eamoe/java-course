@@ -6,9 +6,7 @@ package com.gb.Lesson015;
 public class Task02 {
 
     public static void catchException(int[] intArray) {
-        if (intArray == null) {
-            throw new RuntimeException("Array is null");
-        }
+
         try {
             int d = 0;
             double caughtRes1 = intArray[8] / d;
@@ -17,6 +15,8 @@ public class Task02 {
             System.out.println("Catching exception: " + e);
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new RuntimeException("Index is out of bounds!");
+        } catch (NullPointerException ex) {
+            System.out.println("Array is null!");
         }
     }
 
