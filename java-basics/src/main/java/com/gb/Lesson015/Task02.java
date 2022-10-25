@@ -11,8 +11,8 @@ public class Task02 {
         }
         try {
             int d = 0;
-            double catchedRes1 = intArray[8] / d;
-            System.out.println("catchedRes1 = " + catchedRes1);
+            double caughtRes1 = intArray[8] / d;
+            System.out.println("caughtRes1 = " + caughtRes1);
         } catch (ArithmeticException e) {
             System.out.println("Catching exception: " + e);
         } catch (ArrayIndexOutOfBoundsException e) {
