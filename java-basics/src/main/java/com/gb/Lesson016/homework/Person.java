@@ -102,17 +102,20 @@ public class Person {
         try {
             this.birthDate = parser.parse(parameters[3]);
         } catch (ParseException e) {
-            throw new DataFormatException(parameters[3], "Date");
+            throw new DataFormatException("Cannot parse \"" + parameters[3] + "\" to dd.mm.yyy format.", e);
         }
 
         try {
-            this.phoneNumber = Long.parseLong(parameters[4]);
+            this.phoneNumber = Long.parseUnsignedLong(parameters[4]);
         } catch (NumberFormatException e) {
-            throw new DataFormatException(parameters[4], "Long");
+            throw new DataFormatException("Cannot parse \"" + parameters[4] + "\" to phone number format.", e);
         }
 
-        if (parameters[5].charAt(0) != 'm' && parameters[5].charAt(0) != 'f') {
-            throw new DataFormatException(parameters[5], "'m' or 'f'");
+        if (parameters[5].length() != 1
+            || (parameters[5].charAt(0) != 'm'
+            && parameters[5].charAt(0) != 'f'))
+        {
+            throw new DataFormatException("Cannot parse \"" + parameters[5] + "\" to gender format.");
         }
         this.gender = parameters[5].charAt(0);
 
