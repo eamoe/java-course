@@ -4,14 +4,6 @@ import java.util.Scanner;
 
 public class InputHandler {
 
-    private final String inputMessage =
-        "Введите данные одной строкой в формате (значения долны быть разделены пробелом):\n" +
-        "<Фамилия> " +
-        "<Имя> " +
-        "<Отчество> " +
-        "<Дата Рождения в формате dd.mm.yyyy> " +
-        "<Номер Телефона> " +
-        "<Пол в формате 'm' или 'f'>. ";
     private String userInput;
 
     public InputHandler() {
@@ -33,6 +25,13 @@ public class InputHandler {
     public void inputData() {
 
         Scanner scanner = new Scanner(System.in);
+        String inputMessage = "Введите данные одной строкой в формате (значения долны быть разделены пробелом):\n" +
+            "<Фамилия> " +
+            "<Имя> " +
+            "<Отчество> " +
+            "<Дата Рождения в формате dd.mm.yyyy> " +
+            "<Номер Телефона> " +
+            "<Пол в формате 'm' или 'f'>. ";
         System.out.println(inputMessage);
         this.setUserInput(scanner.nextLine());
         this.validateInput();
