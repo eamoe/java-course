@@ -111,6 +111,11 @@ public class Person {
             throw new DataFormatException(parameters[4], "Long");
         }
 
+        if (parameters[5].charAt(0) != 'm' && parameters[5].charAt(0) != 'f') {
+            throw new DataFormatException(parameters[5], "'m' or 'f'");
+        }
+        this.gender = parameters[5].charAt(0);
+
     }
 
 }
