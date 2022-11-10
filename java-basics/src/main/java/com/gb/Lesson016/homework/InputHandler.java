@@ -11,7 +11,7 @@ public class InputHandler {
         "<Отчество> " +
         "<Дата Рождения в формате dd.mm.yyyy> " +
         "<Номер Телефона> " +
-        "<Пол>. ";
+        "<Пол в формате 'm' или 'f'>. ";
     private String userInput;
 
     public InputHandler() {
