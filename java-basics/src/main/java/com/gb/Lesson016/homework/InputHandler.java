@@ -12,7 +12,6 @@ public class InputHandler {
         "<Дата Рождения в формате dd.mm.yyyy> " +
         "<Номер Телефона> " +
         "<Пол>. ";
-    private final int inputArraySize = 6;
     private String userInput;
 
     public InputHandler() {
@@ -24,8 +23,9 @@ public class InputHandler {
         String[] parameters = this.userInput.split(" ");
         int arraySize = parameters.length;
 
-        if (arraySize != this.inputArraySize) {
-            throw new DataArrayException(arraySize);
+        int expectedArraySize = 6;
+        if (arraySize != expectedArraySize) {
+            throw new DataArrayException(arraySize, expectedArraySize);
         }
 
     }
