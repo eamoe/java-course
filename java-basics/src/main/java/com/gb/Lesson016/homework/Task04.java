@@ -28,21 +28,19 @@
 
 package com.gb.Lesson016.homework;
 
-import java.text.SimpleDateFormat;
+import java.io.File;
+import java.io.IOException;
 
 public class Task04 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         InputHandler inputHandler = new InputHandler();
         inputHandler.inputData();
 
         Person person = new Person(inputHandler.getUserInput());
 
-        System.out.println(person);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        String stringDate = dateFormat.format(person.getBirthDate());
-        System.out.println("Birthdate : " + stringDate);
+        DataStorage.writeToFile("DataStorage/", person);
 
     }
 

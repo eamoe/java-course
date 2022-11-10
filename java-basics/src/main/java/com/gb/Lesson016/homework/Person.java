@@ -80,22 +80,22 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person {" +
-            "firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", middleName='" + middleName + '\'' +
-            ", birthDate=" + birthDate +
-            ", phoneNumber=" + phoneNumber +
-            ", gender=" + gender +
-            '}';
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        String formattedBirthDate = dateFormat.format(this.getBirthDate());
+        return  lastName + ' '
+            + firstName + ' '
+            + middleName + ' '
+            + formattedBirthDate + ' '
+            + phoneNumber + ' '
+            + gender;
     }
 
     public void setPerson(String person) {
 
         String[] parameters = person.split(" ");
 
-        this.firstName = parameters[0];
-        this.lastName = parameters[1];
+        this.lastName = parameters[0];
+        this.firstName = parameters[1];
         this.middleName = parameters[2];
 
         SimpleDateFormat parser = new SimpleDateFormat("dd.MM.yyyy");
